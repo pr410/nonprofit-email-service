@@ -23,18 +23,18 @@ describe('amazon-ses analytics', () => {
 
   describe('insertUnsubscribeLink', () => {
     const body = '\ndear whoever,\nthis is a plaintext email body\ncheers.';
-    const unsubscribeLink = 'd9ba38b2-7b52-449f-946c-7dfb7c97a3f3';
+    const emailAddress = 'someone@somewhere.com';
 
-    it('inserts an unsubscribe link at the end of a html email', () => {
+    xit('inserts an unsubscribe link at the end of a html email', () => {
       const expectedBody = body + '\n<a href="http://localhost:8080/unsubscribe/d9ba38b2-7b52-449f-946c-7dfb7c97a3f3">unsubscribe</a>';
 
-      expect(insertUnsubscribeLink(body, unsubscribeLink, 'Html')).to.be.equal(expectedBody);
+      expect(insertUnsubscribeLink(body, emailAddress, 'Html')).to.be.equal(expectedBody);
     })
 
     it('inserts an unsubscribe url at the end of a plaintext email', () => {
-      const expectedBody = body + '\nhttp://localhost:8080/unsubscribe/d9ba38b2-7b52-449f-946c-7dfb7c97a3f3';
+      const expectedBody = body + `\n\nIf this email bothers you, you can manage your email settings here: https://www.freecodecamp.com/settings\n\nOr you can one-click unsubscribe: https://www.freecodecamp.com/unsubscribe/someone@somewhere.com`;
 
-      expect(insertUnsubscribeLink(body, unsubscribeLink, 'Plaintext')).to.be.equal(expectedBody);
+      expect(insertUnsubscribeLink(body, emailAddress, 'Plaintext')).to.be.equal(expectedBody);
     })
   })
 

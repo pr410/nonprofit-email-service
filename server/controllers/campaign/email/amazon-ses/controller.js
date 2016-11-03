@@ -95,7 +95,7 @@ module.exports = (generator, ListSubscriber, campaignInfo, accessKey, secretKey,
     }).then(newCampaignAnalyticsOpen => {
       updatedCampaignInfo.emailBody = insertTrackingPixel(campaignInfo.emailBody, newCampaignAnalyticsOpen.dataValues.trackingId, campaignInfo.type);
 
-      updatedCampaignInfo.emailBody = insertUnsubscribeLink(updatedCampaignInfo.emailBody, task.unsubscribeKey, campaignInfo.type);
+      updatedCampaignInfo.emailBody = insertUnsubscribeLink(updatedCampaignInfo.emailBody, task.email, campaignInfo.type);
 
       const emailFormat = AmazonEmail(task, updatedCampaignInfo);
 

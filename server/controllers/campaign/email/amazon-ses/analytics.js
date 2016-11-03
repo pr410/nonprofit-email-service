@@ -12,10 +12,11 @@ function wrapLink(body, trackingId, type) {
   return body;
 }
 
-function insertUnsubscribeLink(body, unsubscribeId, type) {
-  const unsubscribeUrl = `${clickthroughHost}/unsubscribe/${unsubscribeId}`;
+function insertUnsubscribeLink(body, email, type) {
+  const unsubscribeUrl = `If this email bothers you, you can manage your email settings here: https://www.freecodecamp.com/settings\n\nOr you can one-click unsubscribe: https://www.freecodecamp.com/unsubscribe/${email}`;
+
   if (type === 'Plaintext') {
-    return body + '\n' + unsubscribeUrl;
+    return body + '\n\n' + unsubscribeUrl;
   }
 
   return body + `\n<a href="${unsubscribeUrl}">unsubscribe</a>`
