@@ -41,7 +41,7 @@ describe('amazon-ses analytics', () => {
     })
 
     it('inserts an unsubscribe url at the end of a plaintext email', () => {
-      const expectedBody = body + `\n\nIf this email bothers you, you can manage your email settings here: https://www.freecodecamp.com/settings\n\nOr you can one-click unsubscribe: https://www.freecodecamp.com/unsubscribe/someone@somewhere.com`;
+      const expectedBody = body + `\n\n\n\n\nIf this email bothers you, you can manage your email settings here: https://www.freecodecamp.com/settings\n\nOr you can one-click unsubscribe: https://www.freecodecamp.com/unsubscribe/someone@somewhere.com`;
       expect(insertUnsubscribeLink(body, emailAddress, 'Plaintext', whiteLabelUrl)).to.be.equal(expectedBody);
     })
 
